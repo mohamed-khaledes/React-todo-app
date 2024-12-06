@@ -33,9 +33,9 @@ const Todo = ({
   });
 
   return (
-    <div className="flex justify-between gap-4 max-w-full items-center text-white bg-purple-800 rounded-2xl px-6 py-5 max-sm:py-4 max-sm:px-4">
+    <div className="flex justify-between gap-4 max-w-full items-center text-white bg-blue-800 rounded-2xl px-6 py-5 max-sm:py-4 max-sm:px-4">
       {val.check && (
-        <div className=" bg-purple-500 p-4 max-sm:p-2 rounded-xl">
+        <div className=" bg-blue-500 p-4 max-sm:p-2 rounded-xl">
           <FaCheck className=" text-4xl" />
         </div>
       )}
@@ -76,7 +76,7 @@ const Todo = ({
         >
           {val.catagory.map((c, index) => (
             <h4
-              className="bg-purple-600 rounded-2xl text-sm max-sm:text-xs px-3 flex items-center font-medium gap-1 py-1 max-sm:py-0"
+              className="bg-blue-600 rounded-2xl text-sm max-sm:text-xs px-3 flex items-center font-medium gap-1 py-1 max-sm:py-0"
               key={index}
             >
               <span className=" text-xl max-sm:text-lg">{c.emoji}</span> {c.catagory}

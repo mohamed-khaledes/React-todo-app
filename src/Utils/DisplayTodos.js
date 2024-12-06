@@ -56,7 +56,7 @@ const DisplayTodos = ({
     <>
       {data.length ? (
         <div>
-          <div className="max-md:container border text-white max-w-[700px] mt-10 max-sm:mt-2 m-auto rounded-3xl bg-gradient-to-r from-purple-500 to-purple-700 p-10 max-sm:p-5">
+          <div className="max-md:container border text-white max-w-[700px] mt-10 max-sm:mt-2 m-auto rounded-3xl bg-gradient-to-r from-blue-500 to-blue-700 p-10 max-sm:p-5">
             <h1 className=" text-2xl max-sm:text-base font-medium">
               Progress summery
             </h1>
@@ -71,9 +71,9 @@ const DisplayTodos = ({
                 <p className="text-sm">{completedTask()}%</p>
               </div>
 
-              <div className="  bg-purple-800 w-full h-2 mt-2 rounded-3xl">
+              <div className="  bg-blue-800 w-full h-2 mt-2 rounded-3xl">
                 <div
-                  className="h-full rounded-3xl transition-all bg-purple-100"
+                  className="h-full rounded-3xl transition-all bg-blue-100"
                   style={{ width: `${completedTask()}%` }}
                 ></div>
               </div>
@@ -88,7 +88,7 @@ const DisplayTodos = ({
               onChange={handleSearch}
               className="w-full h-14 max-sm:h-12 rounded-xl pl-11 placeholder:text-sm outline-none"
             />
-            <IoMdSearch className="absolute top-[50%] left-3 -translate-y-[50%] text-purple-600 text-2xl max-sm:text-xl" />
+            <IoMdSearch className="absolute top-[50%] left-3 -translate-y-[50%] text-blue-600 text-2xl max-sm:text-xl" />
           </div>
 
           <div className="max-md:container max-w-[700px] m-auto flex flex-col gap-4 max-sm:gap-3 pb-5">
