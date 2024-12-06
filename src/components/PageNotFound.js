@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const PageNotFound = () => {
   return (
-    <div className=" w-100 px-5 flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-700 to-purple-500">
+    <div className=" w-100 px-5 flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-700 to-blue-500">
       <div>
         <img
           src={error404Img}
@@ -19,7 +19,7 @@ const PageNotFound = () => {
 
         <div className=" text-center mt-4">
           <Link to={"/"}>
-            <button className="flex group items-center gap-2 m-auto py-3 px-5 text-purple-500 font-semibold bg-amber-50 rounded-full hover:bg-purple-900 duration-300 hover:text-white max-sm:text-sm">
+            <button className="flex group items-center gap-2 m-auto py-3 px-5 text-blue-500 font-semibold bg-amber-50 rounded-full hover:bg-blue-900 duration-300 hover:text-white max-sm:text-sm">
             <FaArrowLeft className=" text-lg max-sm:text-base group-hover:-translate-x-1 duration-75"/> Go Back Home
             </button>
           </Link>

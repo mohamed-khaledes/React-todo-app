@@ -19,7 +19,7 @@ const TaskDetails = () => {
         <div>
           <TopNav title={"Task Details"} />
 
-          <div className=" rounded-2xl bg-purple-700 max-w-[600px] m-auto mt-16 py-10 px-8 max-sm:p-5 text-white">
+          <div className=" rounded-2xl bg-blue-700 max-w-[600px] m-auto mt-16 py-10 px-8 max-sm:p-5 text-white">
             <h1 className=" text-center text-4xl max-sm:text-2xl font-bold">
               Task
             </h1>
@@ -69,7 +69,7 @@ const TaskDetails = () => {
                 <div className="flex flex-wrap gap-3 max-sm:gap-2">
                   {details.catagory.map((val, index) => (
                     <p
-                      className="text-left text-base bg-purple-600 border-purple-300 border-2 flex items-center gap-1 font-medium rounded-2xl px-3 py-1 max-sm:text-xs max-sm:py-0"
+                      className="text-left text-base bg-blue-600 border-blue-300 border-2 flex items-center gap-1 font-medium rounded-2xl px-3 py-1 max-sm:text-xs max-sm:py-0"
                       key={index}
                     >
                        <span className=" text-xl max-sm:text-lg">{val.emoji}</span> {val.catagory}
