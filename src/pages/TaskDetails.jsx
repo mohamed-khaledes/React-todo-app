@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import TopNav from "../Utils/TopNav";
-import PageNotFound from "./PageNotFound";
+import TopNav from "../components/Utils/TopNav";
+import PageNotFound from "./NotFound";
 
 const TaskDetails = () => {
   const { id } = useParams();

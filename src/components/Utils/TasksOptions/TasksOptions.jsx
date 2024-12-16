@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BiTask } from "react-icons/bi";
 import { RiEdit2Fill } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { MdContentCopy } from "react-icons/md";
-import { v4 as uuidv4 } from 'uuid';
-import DataContext from "../context/DataContext";
+import TasksOptionsHook from "./hook";
 
 const TasksOptions = ({
   data,
@@ -16,69 +15,15 @@ const TasksOptions = ({
   setDeleteNotificationTitle,
   setDeleteNotification,
   setOpenOptions,
-  index
+  index,
 }) => {
-
-  const {setIndex} = useContext(DataContext)
-
-  const handleDelete = (isData) => {
-    const deleteData = data.filter((val) => val.id !== isData.id);
-    setData(deleteData);
-    localStorage.setItem("todoItems", JSON.stringify(deleteData));
-
-    setDeleteNotificationTitle(isData.title);
-
-    setDeleteNotification(true);
-    setOpenOptions(false)
-    setTimeout(() => {
-      setDeleteNotification(false);
-      setDeleteNotificationTitle("");
-    }, 4000);
-  };
-
-  const handleCheck = (id) => {
-    const doneData = data.map((val) =>
-      val.id === id ? { ...val, check: !val.check } : val
-    );
-    setData(doneData);
-    setOpenOptions(false)
-    localStorage.setItem("todoItems", JSON.stringify(doneData));
-  };
-
-  const handleCopy = (val) => {
-    const now = new Date();
-
-    const date = now.getDate();
-
-    const month = now.getMonth() + 1;
-
-    const year = now.getFullYear();
-
-    // Get the hours (in 24-hour format)
-    let hours = now.getHours();
-
-    // Determine whether it's AM or PM
-    const amOrPm = hours >= 12 ? "PM" : "AM";
-
-    // Convert hours to 12-hour format
-    hours = (hours % 12 || 12).toString().padStart(2, "0");
-
-    // Get the minutes
-    const minutes = now.getMinutes().toString().padStart(2, "0");
-
-    const copyObj = {
-      id: uuidv4(),
-      title: val.title,
-      description: val.description,
-      check: false,
-      currentTime: `${date}/${month}/${year} ,${hours}:${minutes} ${amOrPm}`,
-      catagory: val.catagory,
-    };
-
-    setData([...data, copyObj]);
-    setOpenOptions(false)
-    localStorage.setItem("todoItems", JSON.stringify([...data, copyObj]));
-  };
+  const { handleCheck, setIndex, handleCopy, handleDelete } = TasksOptionsHook(
+    data,
+    setData,
+    setDeleteNotificationTitle,
+    setDeleteNotification,
+    setOpenOptions
+  );
 
   return (
     <div className="absolute z-10 w-[215px] shadow bg-white top-8 left-0 max-xl:-left-48 p-3 rounded-2xl">
@@ -92,7 +37,7 @@ const TasksOptions = ({
         </li>
         <li
           onClick={() => {
-            setIndex(index)
+            setIndex(index);
             setEdit({
               id: val.id,
               title: val.title,

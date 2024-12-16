@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const EditCatagoryBtn = ({ val, selectedCatagory, handleSelected }) => {
+  
   const [activeCatagory, setActiveCatagory] = useState(false);
 
   useEffect(() => {

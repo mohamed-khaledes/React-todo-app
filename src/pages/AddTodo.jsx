@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import TopNav from "../Utils/TopNav";
-import FormInputs from "../Utils/FormInputs";
+import TopNav from "../components/Utils/TopNav";
+import FormInputs from "../components/Utils/FormInput/FormInputs";
 import DataContext from "../context/DataContext";
 
 const AddTodo = () => {

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IoMdSearch } from "react-icons/io";
-import Todo from "./Todo";
+import Todo from "../Todo";
+import DisplayTodoHook from "./hook";
 
 const DisplayTodos = ({
   data,
@@ -10,47 +11,13 @@ const DisplayTodos = ({
   setDeleteNotification,
   setTaskDetails,
 }) => {
-
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  const completedTask = () => {
-    const completed = data.filter((val) => val.check);
-
-    if (data.length) {
-      const completePercentage = (completed.length / data.length) * 100;
-      return completePercentage.toFixed();
-    } else {
-      return 0;
-    }
-  };
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  useEffect(() => {
-    const filterResults = data.filter(
-      (val) =>
-        val.title.toLowerCase().includes(search.toLowerCase()) ||
-        val.description.toLowerCase().includes(search.toLowerCase())
-    );
-    setSearchResults(filterResults);
-  }, [data, search]);
-
-  const handleTasksStatus = () => {
-    const parsePercentage = parseFloat(completedTask());
-
-    if (parsePercentage === 0) {
-      return "No tasks completed";
-    } else if (parsePercentage === 100) {
-      return "All tasks completed";
-    } else if (parsePercentage >= 50) {
-      return "More than half tasks completed";
-    } else {
-      return "Less than half tasks completed";
-    }
-  };
+  const {
+    handleTasksStatus,
+    completedTask,
+    search,
+    handleSearch,
+    searchResults,
+  } = DisplayTodoHook(data);
 
   return (
     <>
@@ -60,13 +27,27 @@ const DisplayTodos = ({
             <h1 className=" text-2xl max-sm:text-base font-medium">
               Progress summery
             </h1>
-            <h3 className=" max-sm:text-xs">{`${data.length} ${data.length > 1 ? "Tasks" : "Task"}`}</h3>
+            <h3 className=" max-sm:text-xs">{`${data.length} ${
+              data.length > 1 ? "Tasks" : "Task"
+            }`}</h3>
 
             <div className="flex flex-col w-[60%] max-sm:w-[100%] mt-7 max-sm:mt-5">
               <div className="flex justify-between items-center">
                 <p className=" max-sm:text-xs">
                   Progress
-                  <span className={` text-sm max-sm:text-xs ${handleTasksStatus() === "No tasks completed" ? "text-red-700" : handleTasksStatus() === "Less than half tasks completed" ? "text-red-700" : "text-green-500"} font-semibold`}> ({handleTasksStatus()})</span>
+                  <span
+                    className={` text-sm max-sm:text-xs ${
+                      handleTasksStatus() === "No tasks completed"
+                        ? "text-red-700"
+                        : handleTasksStatus() ===
+                          "Less than half tasks completed"
+                        ? "text-red-700"
+                        : "text-green-500"
+                    } font-semibold`}
+                  >
+                    {" "}
+                    ({handleTasksStatus()})
+                  </span>
                 </p>
                 <p className="text-sm">{completedTask()}%</p>
               </div>

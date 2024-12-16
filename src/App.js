@@ -1,11 +1,11 @@
 import React from "react";
-import Home from "./components/Home";
-import AddTodo from "./components/AddTodo";
+import AddTodo from "./pages/AddTodo";
 import { Route, Routes } from "react-router-dom";
-import EditTodo from "./components/EditTodo";
-import TaskDetails from "./components/TaskDetails";
+import EditTodo from "./pages/EditTodo";
+import TaskDetails from "./pages/TaskDetails";
 import { DataProvider } from "./context/DataContext";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./pages/NotFound";
+import Home from "./pages/Home";
 
 const App = () => {
   return (

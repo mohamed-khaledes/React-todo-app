@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import CategoryBtnHook from "./hook";
 
-const CatagoryBtn = ({ val, selectedCatagory, handleSelected }) => {
-  const [activeCatagory, setActiveCatagory] = useState(false);
-
-
-useEffect(()=>{
- const isSelected =  selectedCatagory.some((v)=>(
-    v.catagory === val.catagory 
-  ))
-  setActiveCatagory(isSelected)
-},[selectedCatagory,val.catagory])
+const CategoryBtn = ({ val, selectedCategory, handleSelected }) => {
+  
+const  {activeCategory} = CategoryBtnHook(val, selectedCategory )
 
   return (
     <li
       onClick={(e) => {
         handleSelected({
           id: val.id,
-          catagory: val.catagory,
+          category: val.category,
           emoji: val.emoji,
         });
       }}
       className={`text-base max-sm:text-sm cursor-pointer flex items-center gap-2 font-medium text-white rounded-lg px-4 py-2 max-sm:py-1 ${
-        activeCatagory 
+        activeCategory 
           ? "bg-purple-600 border-purple-300 border-2"
           : "bg-purple-400"
       } `}
     >
       <span className=" text-2xl max-sm:text-lg">{val.emoji}</span>
-      {val.catagory}
+      {val.category}
     </li>
   );
 };
 
-export default CatagoryBtn;
+export default CategoryBtn;
