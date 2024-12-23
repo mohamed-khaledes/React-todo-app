@@ -9,6 +9,7 @@ The "React Todo List with Local Storage" project is a web-based task management 
 * React js
 * CSS3
 * Tailwind CSS
+* Unit test (jest)
   
 # Features 🗒:
 
