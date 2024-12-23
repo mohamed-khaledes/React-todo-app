@@ -21,14 +21,14 @@ const DisplayTodos = ({
 
   return (
     <>
-      {data.length ? (
+      {data?.length ? (
         <div>
           <div className="max-md:container border text-white max-w-[700px] mt-10 max-sm:mt-2 m-auto rounded-3xl bg-gradient-to-r from-blue-500 to-blue-700 p-10 max-sm:p-5">
             <h1 className=" text-2xl max-sm:text-base font-medium">
               Progress summery
             </h1>
-            <h3 className=" max-sm:text-xs">{`${data.length} ${
-              data.length > 1 ? "Tasks" : "Task"
+            <h3 className=" max-sm:text-xs">{`${data?.length} ${
+              data?.length > 1 ? "Tasks" : "Task"
             }`}</h3>
 
             <div className="flex flex-col w-[60%] max-sm:w-[100%] mt-7 max-sm:mt-5">
@@ -73,23 +73,25 @@ const DisplayTodos = ({
           </div>
 
           <div className="max-md:container max-w-[700px] m-auto flex flex-col gap-4 max-sm:gap-3 pb-5">
-            {searchResults.map((val, index) => (
-              <Todo
-                key={index}
-                i={index}
-                val={val}
-                data={data}
-                setData={setData}
-                setEdit={setEdit}
-                setDeleteNotificationTitle={setDeleteNotificationTitle}
-                setDeleteNotification={setDeleteNotification}
-                setTaskDetails={setTaskDetails}
-              />
+            {searchResults?.map((val, index) => (
+              <div data-testid="task" key={index}>
+                <Todo
+                  key={index}
+                  i={index}
+                  val={val}
+                  data={data}
+                  setData={setData}
+                  setEdit={setEdit}
+                  setDeleteNotificationTitle={setDeleteNotificationTitle}
+                  setDeleteNotification={setDeleteNotification}
+                  setTaskDetails={setTaskDetails}
+                />
+                </div>
             ))}
           </div>
         </div>
       ) : (
-        <h1 className=" w-full text-center text-2xl max-md:text-2xl max-sm:text-xl text-white font-bold absolute bottom-[50%] left-[50%] -translate-x-[50%]">
+        <h1 data-testid="no-tasks-message" className=" w-full text-center text-2xl max-md:text-2xl max-sm:text-xl text-white font-bold absolute bottom-[50%] left-[50%] -translate-x-[50%]">
           You don't have any tasks
         </h1>
       )}

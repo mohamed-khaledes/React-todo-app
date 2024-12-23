@@ -30,7 +30,7 @@ const FormInputs = ({
   } = FormInputHook(data, setData, setAddNotification, setAddNotificationTitle);
 
   return (
-    <div className=" py-10">
+    <div className=" py-10" >
       <form onSubmit={handleSubmit} className="max-w-[600px] m-auto">
         <div>
           <label
@@ -42,6 +42,7 @@ const FormInputs = ({
             Task Name
           </label>
           <input
+            data-testid="task-name"
             type="text"
             id="taskName"
             placeholder="Enter task name"
@@ -56,6 +57,7 @@ const FormInputs = ({
             {nameCountError}
           </p>
         </div>
+        
         <div className=" mt-7 max-sm:mt-4">
           <label
             className={`text-sm max-sm:text-xs ${
@@ -66,6 +68,7 @@ const FormInputs = ({
             Task Description
           </label>
           <textarea
+            data-testid="task-description"
             id="taskDescription"
             placeholder="Enter task description"
             value={taskDescription}
@@ -85,6 +88,7 @@ const FormInputs = ({
           </label>
 
           <div
+            data-testid="category"
             onClick={() => setCategoryOpen(!CategoryOpen)}
             className=" bg-white flex gap-7 cursor-pointer justify-between min-h-14 max-sm:min-h-12 px-3 py-3 max-sm:px-2 max-sm:py-2 items-center max-sm:text-xs rounded-xl w-full mt-1"
           >
@@ -129,6 +133,7 @@ const FormInputs = ({
 
         <div className="text-center mt-4">
           <button
+            data-testid="add-task-button"
             disabled={nameCountError || descriptionCountError ? true : false}
             type="submit"
             className={`${
@@ -143,7 +148,10 @@ const FormInputs = ({
       </form>
 
       {emptyInputError && (
-        <div className=" max-sm:w-[230px] px-3 py-2 rounded-md bg-white border-l-[5px] flex items-center gap-2 border-red-600 fixed bottom-8 left-[50%] -translate-x-[50%]">
+        <div
+          data-testid="error-message"
+          className=" max-sm:w-[230px] px-3 py-2 rounded-md bg-white border-l-[5px] flex items-center gap-2 border-red-600 fixed bottom-8 left-[50%] -translate-x-[50%]"
+        >
           <IoIosCloseCircle className=" text-2xl max-sm:text-xl text-red-500" />{" "}
           <h2 className=" max-md:text-xs text-sm text-slate-600 font-semibold">
             Please enter a task name
@@ -152,7 +160,10 @@ const FormInputs = ({
       )}
 
       {maxSelectedError && (
-        <div className=" max-sm:w-[320px] px-3 py-2 max-sm:px-2 max-sm:py-1 rounded-md bg-white border-l-[5px] flex items-center gap-2 border-red-600 fixed bottom-8 left-[50%] -translate-x-[50%]">
+        <div
+          data-testid="max selected error"
+          className=" max-sm:w-[320px] px-3 py-2 max-sm:px-2 max-sm:py-1 rounded-md bg-white border-l-[5px] flex items-center gap-2 border-red-600 fixed bottom-8 left-[50%] -translate-x-[50%]"
+        >
           <IoIosCloseCircle className=" text-3xl max-sm:text-2xl text-red-500" />{" "}
           <h2 className=" max-md:text-xs text-sm text-slate-600 font-semibold">
             You cannot add more than 3 catagories

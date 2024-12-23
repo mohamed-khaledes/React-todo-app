@@ -11,11 +11,11 @@ const TasksOptionsHook = (
   const { setIndex } = useContext(DataContext);
 
   const handleDelete = (isData) => {
-    const deleteData = data.filter((val) => val.id !== isData.id);
+    const deleteData = data?.filter((val) => val?.id !== isData?.id);
     setData(deleteData);
     localStorage.setItem("todoItems", JSON.stringify(deleteData));
 
-    setDeleteNotificationTitle(isData.title);
+    setDeleteNotificationTitle(isData?.title);
 
     setDeleteNotification(true);
     setOpenOptions(false);

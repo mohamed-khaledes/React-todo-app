@@ -20,7 +20,7 @@ const DisplayTodoHook = (data) => {
   };
 
   useEffect(() => {
-    const filterResults = data.filter(
+    const filterResults = data?.filter(
       (val) =>
         val.title.toLowerCase().includes(search.toLowerCase()) ||
         val.description.toLowerCase().includes(search.toLowerCase())

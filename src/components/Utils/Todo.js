@@ -33,8 +33,8 @@ const Todo = ({
   });
 
   return (
-    <div className="flex justify-between gap-4 max-w-full items-center text-white bg-blue-800 rounded-2xl px-6 py-5 max-sm:py-4 max-sm:px-4">
-      {val.check && (
+    <div data-testid='todo' className="flex justify-between gap-4 max-w-full items-center text-white bg-blue-800 rounded-2xl px-6 py-5 max-sm:py-4 max-sm:px-4">
+      {val?.check && (
         <div className=" bg-blue-500 p-4 max-sm:p-2 rounded-xl">
           <FaCheck className=" text-4xl" />
         </div>
@@ -43,38 +43,40 @@ const Todo = ({
       <div className="black w-full">
         <div
           className={`flex justify-between gap-10 items-center ${
-            val.description ? "mb-3 max-sm:mb-1" : "mb-0"
+            val?.description ? "mb-3 max-sm:mb-1" : "mb-0"
           }`}
         >
           <h2
+          data-testid='todo-title'
             className={`${
-              val.check ? "line-through" : null
+              val?.check ? "line-through" : null
             } font-bold text-lg displayInput max-sm:text-sm`}
           >
-            {val.title}
+            {val?.title}
           </h2>
           <p
+           data-testid='todo-current-time'
             className={`${
-              val.check ? "line-through" : null
+              val?.check ? "line-through" : null
             } min-w-[110px] max-sm:text-xs font-light text-gray-200`}
           >
-            {val.currentTime}
+            {val?.currentTime}
           </p>
         </div>
         <p
           className={`${
-            val.check ? "line-through" : null
-          } text-base max-sm:text-sm ${!val.description && "hidden"}`}
+            val?.check ? "line-through" : null
+          } text-base max-sm:text-sm ${!val?.description && "hidden"}`}
         >
-          {val.description}
+          {val?.description}
         </p>
 
         <div
           className={`flex gap-2 items-center flex-wrap mt-3 ${
-            !val.catagory.length && "hidden"
+            !val?.catagory.length && "hidden"
           }`}
         >
-          {val.catagory.map((c, index) => (
+          {val?.catagory.map((c, index) => (
             <h4
               className="bg-blue-600 rounded-2xl text-sm max-sm:text-xs px-3 flex items-center font-medium gap-1 py-1 max-sm:py-0"
               key={index}
